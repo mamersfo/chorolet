@@ -6,10 +6,13 @@ import 'fetch'
 import Legend from './legend'
 import Info from './info'
 
-const attribution = '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>, &copy; <a href="https://carto.com/attribution">CARTO</a>'
+const attribution = 'Kaartgegevens &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>, &copy; <a href="https://carto.com/attribution">CARTO</a>'
+
+// const baseUrl = "http://localhost:3000"
+const baseUrl = "https://mamersfo.github.io"
 
 var get = function(which) {
-  let url = `http://localhost:3000/data/${which}.json`
+  let url = `${baseUrl}/data/${which}.json`
   return fetch(url).then(response => response.json())
 }
 

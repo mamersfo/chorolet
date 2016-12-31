@@ -13,9 +13,9 @@ System.config({
     "npm:*": "jspm_packages/npm/*"
   },
   bundles: {
-    "dependency-bundle.js": [
-      "npm:whatwg-fetch@2.0.1.js",
-      "npm:whatwg-fetch@2.0.1/fetch.js",
+    "build.js": [
+      "app/main.js",
+      "app/info.js",
       "npm:react-leaflet@1.0.2.js",
       "npm:react-leaflet@1.0.2/lib/index.js",
       "npm:react-leaflet@1.0.2/lib/ZoomControl.js",
@@ -418,6 +418,13 @@ System.config({
       "npm:react-leaflet@1.0.2/lib/Circle.js",
       "npm:react-leaflet@1.0.2/lib/AttributionControl.js",
       "npm:react-leaflet@1.0.2/lib/types/index.js",
+      "github:Leaflet/Leaflet@1.0.2.js",
+      "github:Leaflet/Leaflet@1.0.2/dist/leaflet-src.js",
+      "npm:babel-runtime@5.8.38/helpers/class-call-check.js",
+      "npm:babel-runtime@5.8.38/helpers/create-class.js",
+      "npm:babel-runtime@5.8.38/core-js/object/define-property.js",
+      "npm:core-js@1.2.7/library/fn/object/define-property.js",
+      "npm:core-js@1.2.7/library/modules/$.js",
       "npm:babel-runtime@5.8.38/helpers/inherits.js",
       "npm:babel-runtime@5.8.38/core-js/object/set-prototype-of.js",
       "npm:core-js@1.2.7/library/fn/object/set-prototype-of.js",
@@ -428,7 +435,6 @@ System.config({
       "npm:core-js@1.2.7/library/modules/$.a-function.js",
       "npm:core-js@1.2.7/library/modules/$.an-object.js",
       "npm:core-js@1.2.7/library/modules/$.is-object.js",
-      "npm:core-js@1.2.7/library/modules/$.js",
       "npm:core-js@1.2.7/library/modules/$.export.js",
       "npm:core-js@1.2.7/library/modules/$.global.js",
       "npm:babel-runtime@5.8.38/core-js/object/create.js",
@@ -443,12 +449,13 @@ System.config({
       "npm:core-js@1.2.7/library/modules/$.defined.js",
       "npm:core-js@1.2.7/library/modules/$.iobject.js",
       "npm:core-js@1.2.7/library/modules/$.cof.js",
-      "npm:babel-runtime@5.8.38/helpers/create-class.js",
-      "npm:babel-runtime@5.8.38/core-js/object/define-property.js",
-      "npm:core-js@1.2.7/library/fn/object/define-property.js",
-      "npm:babel-runtime@5.8.38/helpers/class-call-check.js",
-      "github:Leaflet/Leaflet@1.0.2.js",
-      "github:Leaflet/Leaflet@1.0.2/dist/leaflet-src.js"
+      "app/legend.js",
+      "npm:babel-runtime@5.8.38/core-js/object/keys.js",
+      "npm:core-js@1.2.7/library/fn/object/keys.js",
+      "npm:core-js@1.2.7/library/modules/es6.object.keys.js",
+      "npm:core-js@1.2.7/library/modules/$.to-object.js",
+      "npm:whatwg-fetch@2.0.1.js",
+      "npm:whatwg-fetch@2.0.1/fetch.js"
     ]
   },
 
