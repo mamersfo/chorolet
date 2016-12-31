@@ -12,7 +12,7 @@ const attribution = 'Kaartgegevens &copy; <a href="http://www.openstreetmap.org/
 const baseUrl = "https://mamersfo.github.io"
 
 var get = function(which) {
-  let url = `${baseUrl}/data/${which}.json`
+  let url = `${baseUrl}/chorolet/data/${which}.json`
   return fetch(url).then(response => response.json())
 }
 
@@ -62,7 +62,7 @@ export default class Main extends React.Component {
     return (
       <Map ref='map' center={position} zoom={zoom} style={{height: height}}>
         <TileLayer
-          url='http://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png'
+          url='https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png'
           attribution={attribution}
         />
         <GeoJSON data={this.state.data} style={style} />
