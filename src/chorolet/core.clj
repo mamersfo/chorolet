@@ -3,40 +3,26 @@
             [clojure.java.io :as io]
             [clojure.data.csv :as csv]))
 
+
+;; GIS data
+
 (def GIS_FILE "data/nlgis_1982.json")
-
-(def TK_FILE  "data/TK1982.csv")
-
-(def PROPS   ["AmsterdamseCode"
-              ;; "GeldigeStemmen"
-              ;; "Kiesgerechtigden"
-              ;; "OngeldigeBlancoStemmen"
-              ;; "Opkomst"
-              ])
-
-(def PARTIES [" Werk en Maatschappij"
-              "CDA"
-              "CP"
-              "CPN"
-              "D66"
-              "DS70"
-              "Evangelische Volkspartij"
-              "GPV"
-              "God Met Ons"
-              "NVU"
-              "PPR"
-              "PSP"
-              "Progressieve Partij voor Behoud van Milieu"
-              "PvdA"
-              "RPF"
-              "Rechtse Volkspartij"
-              "Rooms Katholieke Partij Nederland"
-              "SGP"
-              "SP"
-              "VVD"])
 
 (defn read-json [f]
   (parse-string (slurp f) true))
+
+(defn write-json
+  [root filename]
+  (let [path (str "data/" filename)]
+    (with-open [out (clojure.java.io/writer path)]
+      (generate-stream root out {:pretty false}))))
+
+;; TK Data
+
+(def TK_FILE  "data/TK1982.csv")
+
+(def PROPS   ["AmsterdamseCode"])
+(def PARTIES ["CDA" "CPN" "PvdA" "SGP" "VVD"])
 
 (defn read-csv [f]
   (with-open [in-file (io/reader f)]
@@ -58,25 +44,21 @@
                 props (select-keys m PROPS)]]
       (assoc props "grootste" largest))))
 
+;; Transform
+
 (defn idx-tk [coll k]
   (reduce
    (fn [m n]
      (let [key (get n k)]
        (assoc m key (dissoc n k)))) {} coll))
 
-(defn enhance-json []
+(defn transform []
   (let [idx (idx-tk (read-tk) "AmsterdamseCode")
         json (read-json GIS_FILE)]
-    (assoc json :features
-           (for [f (:features json)
-                 :let [props (:properties f)
-                       found (get idx (:amsterdamcode props))]]
-             (assoc f :properties (merge props found))))))
-
-(defn write-json
-  [root filename]
-  (let [path (str "data/" filename)]
-    (with-open [out (clojure.java.io/writer path)]
-      (generate-stream root out {:pretty false})
-      (println "Written to" path))))
-
+    (write-json
+     (assoc json :features
+            (for [f (:features json)
+                  :let [props (:properties f)
+                        found (get idx (:amsterdamcode props))]]
+              (assoc f :properties (merge props found))))
+     "nlgis_1982+TK1982.json")))
