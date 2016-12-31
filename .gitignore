@@ -10,5 +10,10 @@ pom.xml.asc
 .hgignore
 .hg/
 dependency-bundle*
-jspm_packages/
 node_modules/
+jspm_packages/.dependencies.json
+jspm_packages/.loaderversions
+jspm_packages/github/
+jspm_packages/npm/
+jspm_packages/system-*
+jspm_packages/system.src.js
