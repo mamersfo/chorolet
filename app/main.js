@@ -30,7 +30,7 @@ function style(feature) {
     weight: 1,
     opacity: 1,
     color: 'white',
-    dashArray: '3',
+    dashArray: '1',
     fillOpacity: 0.6
   };
 }
@@ -50,11 +50,6 @@ export default class Main extends React.Component {
     })
   }
 
-  componentDidUpdate() {
-    let m = this.refs.map
-    console.log('m', m)
-  }
-  
   render() {
     let zoom = 8
     let position = [ 52.1589302, 5.3077833 ]
