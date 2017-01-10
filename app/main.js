@@ -8,8 +8,8 @@ import Info from './info'
 
 const attribution = 'Kaartgegevens &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>, &copy; <a href="https://carto.com/attribution">CARTO</a>'
 
-// const baseUrl = "http://localhost:3000"
-const baseUrl = "https://mamersfo.github.io"
+const baseUrl = ""
+// const baseUrl = "https://mamersfo.github.io"
 
 var get = function(which) {
   let url = `${baseUrl}/chorolet/data/${which}.json`
@@ -53,13 +53,9 @@ export default class Main extends React.Component {
   render() {
     let zoom = 8
     let position = [ 52.1589302, 5.3077833 ]
-    let height = '650px'
+    let height = '100%'
     return (
       <Map ref='map' center={position} zoom={zoom} style={{height: height}}>
-        <TileLayer
-          url='https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png'
-          attribution={attribution}
-        />
         <GeoJSON data={this.state.data} style={style} />
         <Legend position='bottomright' colors={legend} />
         <Info position='topright' title='TK 1982: grootste partij per gemeente' />
